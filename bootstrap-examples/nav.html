@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body class="container-fluid">
+    <h2>Product Details</h2>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="#basic" data-bs-toggle="tab" class="nav-link"> <span class="nav-text">Basic details</span> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#preview" data-bs-toggle="tab" class="nav-link"> <span class="nav-text"><img src="../public/Images/Images/realme-1.jpg" width="50" height="50"></span> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#discription" data-bs-toggle="tab" class="nav-link"> <span class="nav-text">Description</span> </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="basic">
+                <dl>
+                    <dt>Name</dt>
+                    <dd>Realme Mobile</dd>
+                    <dt>Price</dt>
+                    <dd>23000.44</dd>
+                </dl>
+            </div>
+            <div class="tab-pane" id="preview">
+                <img src="../public/Images/Images/realme-1.jpg" width="200" height="300">
+            </div>
+            <div class="tab-pane" id="discription">
+                <p>Something about realme mobile..</p>
+            </div>
+        </div>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

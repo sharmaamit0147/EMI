@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         var userDetails = {
+            "Card": "4444555577776890",
+            "Cvv": "3456",
+            "Expiry": "2024"
+         }
+         function VerifyCard(){
+            var card = document.getElementById("Card").value;
+           
+            if(userDetails.Card===card){
+                document.getElementById("tick").className = "bi bi-check-circle-fill";
+                document.getElementById("tick").style.color = "green";
+                document.getElementById("cvvContainer").style.display = "block";
+                document.getElementById("btnPay").disabled = false;
+            } else {
+                document.getElementById("btnPay").disabled = true;
+                document.getElementById("tick").className = "bi bi-x-circle-fill";
+                document.getElementById("tick").style.color = "red";
+            }
+         }
+         function VerifyCvv(){
+            var cvv = document.getElementById("Cvv").value;
+            if(userDetails.Cvv===cvv) {
+                document.getElementById("expiryContainer").style.display = "block";
+            }
+         }
+         function VerifyExpiry(){
+            var expriy = document.getElementById("Expiry").value;
+            if(userDetails.Expiry===expriy) {
+                document.getElementById("btnPay").style.display = "block";
+            }
+         }
+    </script>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+   <fieldset>
+      <legend>Payment Details</legend>
+      <dl>
+        <dt>Card Number</dt>
+        <dd><input type="text" id="Card" onkeyup="VerifyCard()"><span style="color:red" class="bi bi-x-circle-fill" id="tick"></span></dd>
+        <div id="cvvContainer" style="display:none">
+            <dt>CVV</dt>
+            <dd><input type="text" id="Cvv" onkeyup="VerifyCvv()" size="4"></dd>
+        </div>
+        <div id="expiryContainer" style="display:none">
+            <dt>Expiry</dt>
+            <dd>
+                <select id="Expiry"  onchange="VerifyExpiry()">
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                </select>
+            </dd>
+        </div>
+      </dl>
+      <button id="btnPay" style="display:none" >Pay</button>
+   </fieldset>
+</body>
+</html>

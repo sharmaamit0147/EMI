@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+
+        function LoadProducts(){
+            $.ajax({
+                method:"get",
+                url:"http://localhost:4455/products",
+                success: (products)=>{
+                    $.each(products, (key, product)=>{
+                        $(`
+                          <tr>
+                             <td>${product.Name}</td>
+                             <td>
+                               <button id="btnDetails" value=${product.ProductId} class="btn btn-primary">
+                                   <span class="bi bi-eye"> </span>
+                               </button>  
+                               <button id="btnEdit" value=${product.ProductId} class="btn btn-warning">
+                                   <span class="bi bi-pen"> </span>
+                               </button>  
+                               <button id="btnDelete" value=${product.ProductId} class="btn btn-danger">
+                                   <span class="bi bi-trash"> </span>
+                               </button>  
+                             </td>
+                          </tr>
+                        `).appendTo("tbody");
+                    })
+                }
+            })
+        }
+
+        $(function(){
+            LoadProducts();  
+            $("#detailsContainer").hide();
+            $("#editContainer").hide();
+            $(document).on("click", "#btnDetails", (e)=>{
+                $("#detailsContainer").show(1000);
+                $("#editContainer").hide(1000);
+                $.ajax({
+                    method:"get",
+                    url: `http://localhost:4455/products/${e.currentTarget.value}`,
+                    success: (products)=> {
+                        var [product] = products;
+                        $("#lblName").html(product.Name);
+                        $("#lblPrice").html(product.Price);
+                        $("#lblStock").html((product.Stock==true)?"Available":"Out of Stock");
+                    }
+                })
+            })
+
+            $("#newProduct").click(()=>{
+                location.href="newProduct.html";
+            })
+
+            $(document).on("click", "#btnDelete", (e)=>{
+                 var id = parseInt(e.currentTarget.value);
+                 var flag = confirm("Are you sure\n Want to Delete?");
+                 if(flag==true){
+                    $.ajax({
+                    method:"delete",
+                    url:`http://localhost:4455/deleteproduct/${id}`
+                    })
+                    alert("Record Deleted");
+                    location.reload();
+                 }
+            })
+            $(document).on("click", "#btnEdit", (e)=>{
+                $("#detailsContainer").hide();
+                $("#editContainer").show(1000);
+                $.ajax({
+                    method:"get",
+                    url: `http://localhost:4455/products/${e.currentTarget.value}`,
+                    success: (products)=> {
+                        var [product] = products;
+                        $("#txtId").val(product.ProductId);
+                        $("#txtName").val(product.Name);
+                        $("#txtPrice").val(product.Price);
+                        $("#optStock").prop("checked", product.Stock);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Products CRUD</h2>
+    <button class="btn btn-primary" id="newProduct">New Product</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <hr size="13" noshade color="gray">
+    <div id="detailsContainer">
+        <h2>Product Details</h2>
+        <dl>
+            <dt>Name</dt>
+            <dd id="lblName"></dd>
+            <dt>Price</dt>
+            <dd id="lblPrice"></dd>
+            <dt>Stock</dt>
+            <dd id="lblStock"></dd>
+        </dl>
+    </div>
+    <div id="editContainer">
+        <h2>Edit Product</h2>
+        <dl>
+            <dt>Product Id</dt>
+            <dd><input type="number" id="txtId"></dd>
+            <dt>Name</dt>
+            <dd><input type="text" id="txtName"></dd>
+            <dt>Price</dt>
+            <dd><input type="text" id="txtPrice"></dd>
+            <dt>Stock</dt>
+            <dd><input type="checkbox" id="optStock"></dd>
+        </dl>
+        <button class="btn btn-success">Save</button>
+    </div>
+</body>
+</html>

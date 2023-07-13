@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 4fr 8fr;
+        }
+        iframe {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Inter Document Links</h2>
+    <div class="container">
+        <div>
+            <ol>
+                <li><a href="amazon-card.html" target="_blank">Amazon Template</a></li>
+                <li><a href="http://www.amazon.in">Amazon Shopping</a></li>
+                <li><a href="javascript:window.open('Images/asp.jpg','ASP','width=300 height=300')"> <img src="Images/asp.jpg" width="50" height="50"> </a></li>
+                <li><a href="Images/android.jpg" target="frameBody">Android</a></li>
+                <li><a href="Images/amazonBack.jpg" download="Amazon-Banner">Amazon Banner</a></li>
+                <li><a href="docs/MobileApp.pdf" target="frameBody">Class Tutorial PDF</a></li>
+                <li><a href="docs/Role module .docx">Class Tutorial Word Document</a></li>
+                <li>Contact Us : <a href="mailto:hr@nareshit.in">hr@nareshit.in</a></li>
+                <li>Skype Us : <a href="skype:NITinfo@outlook.com">NITinfo@outlook.com</a></li>
+                <li>Call Us : <a href="tel:+918435587575">+918435587575</a></li>
+                <li><a href="https://www.youtube.com/embed/K1JWH7wpoiw" target="frameBody">Core Java - Hindi</a></li> 
+            </ol>
+        </div>
+        <div>
+            <iframe width="100%" name="frameBody" height="350"></iframe>
+        </div>
+    </div>
+</body>
+</html>

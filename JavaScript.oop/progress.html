@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var count = 0;
+        function LoadingStatus(){
+            count++;
+            if(count<=100){
+                document.getElementById("progress").value=count;
+                document.getElementById("status").innerHTML = `${count} %`;
+            } else {
+                location.href = "../JavaScript.Examples/shopper-template.html";
+            }
+        }
+        function StartClick(){
+            document.getElementById("statusContainer").style.display="block";
+            document.querySelector("button").style.display = "none";
+            setInterval(LoadingStatus,200);
+        }
+    </script>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center" style="height:500px">
+    <div>
+        <button onclick="StartClick()" class="btn btn-primary">Load Template</button>
+        <div class="text-center mt-4" id="statusContainer" style="display:none">
+            <p>
+                <progress id="progress" min="1" max="100" value="1"></progress>
+            </p>
+            <p id="status"></p>
+            <p>Loading Template</p>
+        </div>
+    </div>
+</body>
+</html>

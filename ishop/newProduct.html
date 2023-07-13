@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+         $(function(){
+           
+             $("#btnAdd").click(()=>{
+                var product = {
+                  ProductId: $("#ProductId").val(),
+                  Name: $("#Name").val(),
+                  Price: $("#Price").val(),
+                  Stock: $("#Stock").prop("checked")
+                };
+                $.ajax({
+                method:"post",
+                url: "http://localhost:4455/addproduct",
+                data: product
+                })
+                alert("Record Inserted");
+                location.href="products.html";
+             })
+         })
+    </script>
+</head>
+<body>
+    <h2>Add New Product</h2>
+    <dl>
+        <dt>Product Id</dt>
+        <dd><input type="number" id="ProductId"></dd>
+        <dt>Name</dt>
+        <dd><input type="text" id="Name"></dd>
+        <dt>Price</dt>
+        <dd><input type="text" id="Price"></dd>
+        <dt>Stock</dt>
+        <dd>
+            <input type="checkbox" id="Stock"> Available
+        </dd>
+    </dl>
+    <button id="btnAdd">Add</button>
+</body>
+</html>

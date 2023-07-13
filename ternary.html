@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var margin = 0;
+        function MoveRightClick(){
+           
+            margin += 20;
+            document.querySelector("img").style.marginLeft = margin + "px";
+        }
+        var margin = 0;
+        function MoveLeftClick(){
+           
+            margin -= 20;
+            document.querySelector("img").style.marginLeft = margin + "px";
+        }
+    </script>
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <button onclick="MoveRightClick()">Move Right</button>
+    <button onclick="MoveLeftClick()">Move Left</button>
+    <br><br>
+    <img src="./public/Images/Images/avatar.jpg" width="100" height="100">
+</body>
+</html>

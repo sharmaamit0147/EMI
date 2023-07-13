@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function LoadClick(){
+             fetch("../data/products.json")
+             .then(function(response){
+                return response.json();
+             })
+             .then(function(products){
+                  for(var product of products)
+                  {
+                      var tr = document.createElement("tr");
+                      var tdName = document.createElement("td");
+                      var tdPrice = document.createElement("td");
+                      var tdStock = document.createElement("td");
+                      var tdRating = document.createElement("td");
+                      var tdPhoto = document.createElement("td");
+
+                      tdName.innerHTML = product.Name;
+                      tdPrice.innerHTML = product.Price;
+                      tdStock.innerHTML = product.Stock;
+                      tdRating.innerHTML = `${product.Rating.Rate} [${product.Rating.Count}]`;
+                      tdPhoto.innerHTML = `<img src=${product.Photo} width="50" height="50">`;
+
+                      tr.appendChild(tdName);
+                      tr.appendChild(tdPrice);
+                      tr.appendChild(tdStock);
+                      tr.appendChild(tdRating);
+                      tr.appendChild(tdPhoto);
+
+                      document.querySelector("tbody").appendChild(tr);
+                  }
+             })
+             .catch(function(error){
+                alert(error);
+             })
+             
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Products Table <button onclick="LoadClick()" class="btn btn-primary">Load Data</button> </h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Rating</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

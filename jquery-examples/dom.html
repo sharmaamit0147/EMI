@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+             $("#btnRegister").click(()=>{
+                 $("#lblName").html($("#Name").val());
+                 $("#lblPrice").html($("#Price").val());
+                 $("#lblCity").html($("#City").val());
+                 
+                 var stock = ($("#Stock").prop("checked"))?"Available":"Out of Stock";
+                 $("#lblStock").html(stock);
+             })
+        })
+    </script>
+</head>
+<body>
+    <h2>Register</h2>
+    <dl>
+        <dt>Name</dt>
+        <dd><input type="text" id="Name"></dd>
+        <dt>Price</dt>
+        <dd><input type="text" id="Price"></dd>
+        <dt>City</dt>
+        <dd>
+            <select id="City">
+                <option>Delhi</option>
+                <option>Hyd</option>
+            </select>
+        </dd>
+        <dt>Stock</dt>
+        <dd>
+            <input type="checkbox" id="Stock"> Available
+        </dd>
+    </dl>
+    <button id="btnRegister">Register</button>
+    <div style="position:absolute; top:10px; left:300px">
+        <h2>Product Details</h2>
+        <dl>
+            <dt>Name</dt>
+            <dd id="lblName"></dd>
+            <dt>Price</dt>
+            <dd id="lblPrice"></dd>
+            <dt>City</dt>
+            <dd id="lblCity"></dd>
+            <dt>Stock</dt>
+            <dd id="lblStock"></dd>
+        </dl>
+    </div>
+</body>
+</html>

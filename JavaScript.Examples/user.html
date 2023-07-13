@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data List</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        h1{
+            margin: 20px;
+            padding: 10px;
+            background-color: red;
+        }
+        a{
+            padding: 10px;
+            margin: 20px;
+            color: orangered;
+        }
+        dl{
+            list-style: circle;
+        }
+        h2{
+            margin: 20px;
+            padding: 10px;
+            background-color: brown;
+        }
+    </style>
+    <script type="text/javascript">
+        function BookClick(){
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblMobile").innerHTML= document.getElementById("txtMobile").value;
+            document.getElementById("lblPosition").innerHTML= document.getElementById("txtPosition").value;
+            document.getElementById("lblCity").innerHTML= document.getElementById("txtCity").value;
+
+            var employeeName = "";
+            var employeeMobileNumber = "";
+            var employeePosition = "";
+            var employeeCity = "";
+
+            var optEmployee = document.getElementById("optEmployee");
+
+            document.getElementById("lblEmployee").innerHTML = employeeName;
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <header>
+        <img src="../public/Images/Images/LTIMindtree.png" width="100%" height="150">
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact Us</a>
+    </nav>
+    <main>
+        <section>
+            <div class="accordion" id="employeeName">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="btn btn-success w-100" data-bs-target="#employee" data-bs-toggle="collapse">
+                            Employee Info
+                        </button>
+                    </div>
+                    <div class="accordion-collapse collapse show" id="employee" data-bs-parent="employeeName">
+                        <div class="accordion-body">
+                            <dl>
+                               <dt>Employee Name</dt>
+                               <dd><input type="text" id="txtName" class="form-control"></dd>
+                               <dt>Mobile Number</dt>
+                               <dd><input type="text" id="txtMobile" class="form-control"></dd>
+                            </dl>
+                         </div>
+                       </div>
+                   </div>
+                   <div class="accordion" id="employeeName">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <button class="btn btn-secondary w-100" data-bs-target="#position" data-bs-toggle="collapse">
+                                Employee Details
+                            </button>
+                        </div>
+                        <div class="accordion-collapse collapse show" id="position" data-bs-parent="employeeName">
+                            <div class="accordion-body">
+                                <dl>
+                                   <dt>Employee Position</dt>
+                                   <dd><input type="text" id="txtPosition" class="form-control"></dd>
+                                   <dt>City</dt>
+                                   <dd><input type="text" id="txtCity" class="form-control"></dd>
+                                </dl>
+                             </div>
+                           </div>
+                       </div>
+                       <div class="row mt-2">
+                        <div class="col">
+                            <button onclick="BookClick()" class="btn btn-danger w-100" data-bs-target="#Summary" data-bs-toggle="modal">Book Employee</button>
+                            <div class="modal fade" id="Summary">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2>Employee Summary</h2>
+                                            <button data-bs-dismiss="modal" class="btn-close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                                   
+                                            <div class="col">
+                                             <dl class="row">
+                                             <dt class="col-3">Employee Name</dt>
+                                             <dd class="col-9" id="lblName"></dd>
+                                             <dt class="col-3">Mobile</dt>
+                                             <dd class="col-9" id="lblMobile"></dd>
+                                             <dt class="col-3">Employee Position</dt>
+                                             <dd class="col-9" id="lblPosition"></dd>
+                                             <dt class="col-3">City</dt>
+                                             <dd class="col-9" id="lblCity"></dd>
+                                             </dl>
+                                        </div>
+        </section>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </main>
+</body>
+</html>

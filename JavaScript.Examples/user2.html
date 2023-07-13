@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function BookClick(){
+            document.getElementById("summary").style.display="block";
+
+            document.getElementById("lblName").innerHTML = document.getElementById("Name").value;
+            document.getElementById("lblLocation").innerHTML = document.getElementById("Location").value;
+            document.getElementById("lblDate").innerHTML = document.getElementById("Date").value;
+            document.getElementById("lblTiming").innerHTML = document.getElementById("Timing").value;
+            document.getElementById("lblSeats").innerHTML = document.getElementById("Seats").value;
+           
+            employeeName = document.getElementById("Name").value;
+            if(employeeName=="Sumit Sharma") {
+                document.getElementById("photo").src="../public/Images/Images/Sumit Image.jpg";
+            }
+            if(employeeName=="Siddharth Sharma") {
+                document.getElementById("photo").src="../public/Images/Images/Siddharth Image.jpg";
+            }
+            if(employeeName=="Amit Sharma") {
+                document.getElementById("photo").src="../public/Images/Images/Amit Image.jpg";
+            }
+            if(employeeName=="Ashu Sharma") {
+                document.getElementById("photo").src="../public/Images/Images/Ashu Image.jpg";
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+        <div id="toolBar" class="mt-3 d-flex justify-content-between bd-dark p-2">
+            <select class="form-select" id="Name">
+            <option>Employee Name</option>
+            <option>Sumit Sharma</option>
+            <option>Siddharth Sharma</option>
+            <option>Amit Sharma</option>
+            <option>Ashu Sharma</option>
+            </select>
+        </div>
+        <div>
+            <select class="form-select" id="Location"></select>
+            <option>Employee Work Location</option>
+            <option>Pune</option>
+            <option>Surat</option>
+            <option>Jaipur</option>
+            <option>Chittorgarh</option>
+        </div>
+        <div>
+            <select class="form-select" id="Date"></select>
+            <option>Employee Present Date</option>
+            <option>Monday 1-July</option>
+            <option>Tuesday 4-July</option>
+            <option>Friday 8-July</option>
+            <option>Saturday 12-july</option>
+        </div>
+        <div>
+            <select class="form-select" id="Timing"></select>
+            <option>Employee Office Timing</option>
+            <option>11:00 AM</option>
+            <option>2:00 PM</option>
+            <option>4:00 PM</option>
+            <option>6:00 PM</option>
+        </div>
+        <div>
+            <select class="form-select" id="Seats"></select>
+            <option>Employee Seat Number</option>
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+        </div>
+        <div>
+            <button onclick="BookClick()" class="btn w-100 btn-danger">Book</button>
+        </div>
+    </div>
+    <div id="summary" class="mt-3" style="display: none;">
+        <dl style="width: 250px;">
+            <h3 class="bg-dark text-white p-1">Employee Summary</h3>
+            <dt>
+                <img id="poster" width="100%" height="200">
+            </dt>
+            <dt>Employee Name</dt>
+            <dd id="lblName"></dd>
+            <dt>Location</dt>
+            <dd id="lblLocation"></dd>
+            <dt>Date</dt>
+            <dd id="lblDate"></dd>
+            <dt>Timing</dt>
+            <dd id="lblTiming"></dd>
+            <dt>Seats</dt>
+            <dd id="lblSeats"></dd>
+        </dl>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

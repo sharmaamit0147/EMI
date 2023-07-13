@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p::first-letter {
+            font-size: 40px;
+            font-family: Arial;
+            color: red;
+            float: left;
+        }
+        p::first-line {
+            color: red;
+        }
+        p::selection {
+            background-color: yellow;
+        }
+        ul {
+            display: flex;
+            list-style: none;
+        }
+        li::after {
+            content: " >> ";
+        }
+        li:last-child::after {
+            content: "";
+        }
+        li:last-child {
+            color: gray;
+        }
+        input::placeholder {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="User Name Block Letters">
+    <ul>
+        <li>Home</li>
+        <li>Electronics</li>
+        <li>Mobiles</li>
+        <li>Samsung</li>
+    </ul>
+    <p align="justify">These terms ("Terms") cover the use of those Microsoft consumer products, websites and services listed at the end of these Terms here (https://www.microsoft.com/servicesagreement#serviceslist) (the "Services"). By providing the opportunity of subscribing for, using and/or ordering the Services, Microsoft makes an offer to you. You accept these Terms by creating a Microsoft account, by using the Services or by continuing to use the Services after being notified of a change to these Terms. Please read, print and save a copy of these Terms for your records because Microsoft won’t save a copy for you.</p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function VerifyUserId(){
+            var userid = document.getElementById("UserId").value;
+            var error = document.getElementById("error");
+
+            fetch("../data/users.json")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(users){
+                for(var user of users) {
+                    if(user.UserName==userid){
+                        error.innerHTML = "User Id Taken - Try Another".fontcolor('red');
+                        break;
+                    } else {
+                        error.innerHTML= "User Id Available".fontcolor('green');
+                    }
+                }
+            })
+        }
+        function HideMessage(){
+            document.getElementById("error").innerHTML = "";
+        }
+        function VerifyCaps(e){
+            var pwdError = document.getElementById("pwdError");
+            if(e.keyCode>=65 && e.keyCode<=90) {
+                pwdError.style.display = "block";
+            } else {
+                pwdError.style.display = "none";
+            }
+        }
+        function ShowTip(){
+            document.getElementById("tip").innerHTML = "Password 4 to 15 chars alpha numeric only".fontcolor('gold').fontsize(2);
+        }
+        function HideTip(){
+            document.getElementById("tip").innerHTML = "";
+        }
+            
+    </script>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Id</dt>
+        <dd><input type="text" onkeyup="VerifyUserId()" onblur="HideMessage()" id="UserId"></dd>
+        <dd id="error"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" onfocus="ShowTip()" onblur="HideTip()" onkeypress="VerifyCaps(event)" id="Password"></dd>
+        <dd id="pwdError" style="color:goldenrod; display: none;">
+           <span class="bi bi-exclamation-triangle"></span> <span>Warning Caps ON</span>
+        </dd>
+        <dd id="tip"></dd>
+    </dl>
+</body>
+</html>

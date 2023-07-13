@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function VerifyName(){
+            var username = document.getElementById("UserName").value;
+            var userError = document.getElementById("userError");
+            if(username==""){
+                userError.innerHTML = "User Name Required".fontcolor('red');
+            } else {
+                if(username.length<4) {
+                    userError.innerHTML = "Name too short min 4 chars.".fontcolor('red');
+                } else if(username.length>10) {
+                    userError.innerHTML = "Name too long max 10 chars.".fontcolor('red');
+                } else {
+                    userError.innerHTML = "";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>User Name</dt>
+        <dd><input type="text" onkeyup="VerifyName()" id="UserName" ></dd>
+        <dd id="userError"></dd>
+    </dl>
+</body>
+</html>

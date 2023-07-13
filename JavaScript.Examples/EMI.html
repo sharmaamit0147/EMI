@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function AmountChange(){
+            document.getElementById("txtAmount").value = document.getElementById("rangeAmount").value;
+        }
+        function YearChange(){
+            document.getElementById("txtYears").value = document.getElementById("rangeYears").value;
+        }
+        function RateChange(){
+            document.getElementById("txtRate").value = document.getElementById("rangeRate").value;
+        }
+        function CalculateClick(){
+            var P = parseInt(document.getElementById("txtAmount").value);
+            var r = parseFloat(document.getElementById("txtRate").value)/12/100;
+            var n = parseInt(document.getElementById("txtYears").value) * 12;
+
+            var EMI = P * r * Math.pow(1 + r,n)/Math.pow(1 + r, n) - 1;
+
+            document.getElementById("result").innerHTML = `Your monthly installment is <b>${Math.round(EMI)}</b> for ${P}.`;
+
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>EMI Calculator</h2>
+    <div class="p-3 border border-2 border-dark">
+        <div class="row">
+            <div class="col">
+                Amount you need &#8377; <input type="text" id="txtAmount" size="15">
+            </div>
+            <div class="col">
+                for <input type="text" id="txtYears" size="4"> years
+            </div>
+            <div class="col">
+                Interest rate <input type="text" id="txtRate" size="4"> %
+            </div>
+        </div>
+        <div class="row mt-4">
+              <div class="col">
+                &#8377; 10,000 <input type="range" onchange="AmountChange()" id="rangeAmount" value="10000" min="10000" max="1000000"> &#8377; 10,00,000
+             </div>
+             <div class="col">
+                1 <input type="range" id="rangeYears" onchange="YearChange()" value="1" min="1" max="5"> 5
+             </div>
+             <div class="col">
+                10.45% <input type="range" id="rangeRate" onchange="RateChange()" value="10.45" step="0.1" min="10.45" max="18.45"> 18.45%
+             </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <button class="btn btn-primary" onclick="CalculateClick()">Calculate</button>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 text-center">
+        <p id="result"></p>
+    </div>
+</body>
+</html>

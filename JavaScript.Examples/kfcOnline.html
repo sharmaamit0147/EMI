@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC-Online Order</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script type="text/javascript">
+        function OrderClick(){
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblMobile").innerHTML= document.getElementById("txtMobile").value;
+
+            var mealName = "";
+            var mealCost = 0;
+           
+            var adOnName = "";
+            var adOnCost = 0;
+
+            var total = 0;
+
+            var optBurger = document.getElementById("optBurger");
+            var optRoller = document.getElementById("optRoller");
+            var mealPic = document.getElementById("mealPic");
+
+            if(optBurger.checked) {
+                mealPic.src= "../public/Images/Images/omg1.png";
+                mealName = optBurger.value;
+                mealCost = 120;
+            }
+            if(optRoller.checked) {
+                mealPic.src= "../public/Images/Images/omg2.png";
+                mealName = optRoller.value;
+                mealCost = 100;
+            }
+
+            var optKrusher = document.getElementById("optKrusher");
+            var optWings = document.getElementById("optWings");
+
+            if(optKrusher.checked) {
+                adOnName += optKrusher.value + "<br>";
+                adOnCost = 40;
+                mealCost+=adOnCost;
+            }
+
+            if(optWings.checked) {
+                adOnName += optWings.value + "<br>";
+                adOnCost = 70;
+                mealCost += adOnCost;
+            }
+            total = mealCost;
+
+            document.getElementById("lblMeal").innerHTML = mealName;
+            document.getElementById("lblAdOn").innerHTML = adOnName;
+            document.getElementById("lblTotal").innerHTML = `<b>&#8377; ${total}</b>`
+
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <header>
+        <img src="../public/Images/Images/kfctop.png" width="100%" height="150">
+    </header>
+    <section>
+        <div class="accordion" id="kfcForm">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#customer" data-bs-toggle="collapse">
+                        Customer Info
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse show" id="customer" data-bs-parent="#kfcForm">
+                  <div class="accordion-body">
+                     <dl>
+                        <dt>Customer Name</dt>
+                        <dd><input type="text" id="txtName" class="form-control"></dd>
+                        <dt>Mobile Number</dt>
+                        <dd><input type="text" id="txtMobile" class="form-control"></dd>
+                     </dl>
+                  </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#meal" data-bs-toggle="collapse">
+                        Select a Meal
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse" id="meal" data-bs-parent="#kfcForm">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/Images/omg1.png" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>OMG Burger</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3> <input type="radio" class="form-check-input" name="meal" value="OMG Burger" id="optBurger"> &#8377; 120/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/Images/omg2.png" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>OMG  Roller</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3> <input type="radio" class="form-check-input" name="meal" value="OMG Roller" id="optRoller"> &#8377; 100/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#AdOn" data-bs-toggle="collapse">
+                        Select Ad-ON's
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse" id="AdOn" data-bs-parent="#kfcForm">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/Images/wings.png" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Hot Wings</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3> <input type="checkbox" class="form-check-input"  value="Hot Wings" id="optWings"> &#8377; 70/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/Images/krusher1.jpg" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Krusher Brownie</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3> <input type="checkbox" class="form-check-input"  value="Krusher Brownie" id="optKrusher"> &#8377; 40/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button onclick="OrderClick()" class="btn btn-danger w-100" data-bs-target="#Summary" data-bs-toggle="modal">Place Order</button>
+                                <div class="modal fade" id="Summary">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2>Your Bill Summary</h2>
+                                                <button data-bs-dismiss="modal" class="btn-close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                   
+                                                   <div class="col">
+                                                    <dl class="row">
+                                                    <dt class="col-3">Customer Name</dt>
+                                                    <dd class="col-9" id="lblName"></dd>
+                                                    <dt class="col-3">Mobile</dt>
+                                                    <dd class="col-9" id="lblMobile"></dd>
+                                                    <dt class="col-3">Meal</dt>
+                                                    <dd class="col-9" id="lblMeal"></dd>
+                                                    <dt class="col-3">Ad-ON's</dt>
+                                                    <dd class="col-9" id="lblAdOn"></dd>
+                                                    <dt class="col-3">Total</dt>
+                                                    <dd class="col-9" id="lblTotal"></dd>
+                                                    </dl>
+                                                   </div>
+                                                   <div class="col">
+                                                      <img width="100%" height="200" id="mealPic">
+                                                   </div>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

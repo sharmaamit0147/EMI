@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .count {
+            background-color: black;
+            color: white;
+            padding: 3px;
+            border-radius: 30px;
+            font-weight: bold;
+            position: absolute;
+            right: -10px;
+            top: -10px; 
+            width: 30px;
+            height: 30px;
+        }
+        button {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <h2>Relative</h2>
+    <button class="btn btn-primary btn-lg">
+        <span class="bi bi-bell"></span>
+        Notifications
+        <span class="count">4</span>
+    </button>
+    <h2>Cart</h2>
+    <div>
+        <span class="bi bi-cart"></span>
+        <span class="cart-count">2</span>
+    </div>
+</body>
+</html>

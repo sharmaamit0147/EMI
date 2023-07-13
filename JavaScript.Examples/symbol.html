@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function LoadTime(){
+            var now = new Date();
+            document.getElementById("lblTime").innerHTML = now.toLocaleTimeString();
+        }
+        function LoadDate(){
+            var now = new Date();
+            document.getElementById("lblDate").innerHTML = now.toDateString();
+            var hrs = now.getHours();
+            var img = document.querySelector("img");
+            var p = document.querySelector("p");
+            if(hrs>=0 && hrs<=12) {
+               img.src = "../public/Images/Images/morning.gif";
+               p.innerHTML = "Hello ! Good Morning";
+            } else if (hrs>=13 && hrs<=17) {
+                img.src = "../public/Images/Images/afternoon.gif";
+                p.innerHTML = "Hello ! Good Afternoon";
+            } else if (hrs>17 && hrs<=23) {
+                img.src = "../public/Images/Images/evening.gif";
+                p.innerHTML = "Hello ! Good Evening";
+            }
+        }
+        function bodyload(){
+            setInterval(LoadTime, 1000);
+            LoadDate();
+        }
+    </script>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <div class="btn-toolbar bg-danger d-flex mt-2 justify-content-between">
+        <div>
+            <button class="btn btn-danger">Home</button>
+            <button class="btn btn-danger">Fashion</button>
+            <button class="btn btn-danger">Electronics</button>
+        </div>
+        <div>
+            <button class="btn btn-danger"><span id="lblDate"></span></button>
+        </div>
+        <div>
+            <button class="btn btn-danger"> <span class="bi bi-clock"></span> <span id="lblTime"></span></button>
+        </div>
+    </div>
+    <main style="height: 400px;" class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <img>
+            <p></p>
+        </div>
+    </main>    
+</body>
+</html>

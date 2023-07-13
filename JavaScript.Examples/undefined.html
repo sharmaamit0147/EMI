@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script>
+          var categories = ["Delhi", "Hyd", "Banglore", "Mumbai", "Chennai"];
+          function bodyload(){
+            categories.sort();
+            categories.reverse();
+              for(var item of categories)
+              {
+                   var li = document.createElement("li");
+                   li.innerHTML = item;
+                   document.querySelector("ol").appendChild(li);
+
+                   var opt = document.createElement("option");
+                   opt.text = item;
+                   opt.value = item;
+                   document.querySelector("select").appendChild(opt);
+
+                   var ul_li = document.createElement("li");
+                   ul_li.innerHTML = `<input type="checkbox"> ${item}`;
+                   document.querySelector("ul").appendChild(ul_li);
+
+                   var tr = document.createElement("tr");
+                   var td = document.createElement("td");
+                   td.innerHTML = item;
+                   tr.appendChild(td);
+                   document.querySelector("tbody").appendChild(tr);
+
+              }
+          }
+     </script>
+</head>
+<body onload="bodyload()">
+     <ol></ol>
+     <select></select>
+     <ul style="list-style:none"></ul>
+     <table border="1" width="200">
+          <thead>
+               <tr>
+                    <th>Categories</th>
+               </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+     </table>
+</body>
+</html>

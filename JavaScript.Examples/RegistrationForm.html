@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    
+    <style>
+        .Mobile:invalid+div {
+            display: block;
+            color: red;
+        }
+        .Mobile:valid+div {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Register Employee
+    </h1>
+    <form>
+        <dl>
+            <dt>Employee Name</dt>
+            <dd>
+                <input type="text" class="EmployeeName" placeholder="Name">
+            </dd>
+            <dt>Gender</dt>
+            <dd>
+                <select id="Gender">
+                    <option>Choose</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </dd>
+            <dt>Mobile</dt>
+            <dd>
+                <input type="text" pattern="\d{10}" class="Mobile" placeholder="Number">
+                <div>invalid Mobile : 10 digits required</div>
+            </dd>
+            <dt>Email</dt>
+            <dd>
+                <input type="text" class="Email" placeholder="Mail">
+            </dd>
+            <dt>Employee Position</dt>
+            <dd>
+                <input type="text" id="Position" placeholder="Position">
+            </dd>
+            <dt>City</dt>
+            <dd>
+                <select id="City">
+                    <option>Choose City</option>
+                    <option>Pune</option>
+                    <option>Indore</option>
+                    <option>Jaipur</option>
+                    <option>Surat</option>
+                </select>
+            </dd>
+        </dl>
+        <div class="mt-3">
+            <button onclick="EmployeeSummaryClick()" class="btn btn-danger w-9" data-bs-target="#Summary" data-bs-toggle="modal">Employee Summary</button>
+            <div class="modal fade" id="Summary">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Employee Summary</h2>
+                            <button data-bs-dismiss="modal" class="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col">
+                             <dl class="row">
+                                 <dt class="col-3">Employee Name</dt>
+                                 <dd class="col-9" id="lblName"></dd>
+                                 <dt class="col-3">Gender</dt>
+                                 <dd class="col-9" id="lblGender"></dd>
+                                 <dt class="col-3">Mobile</dt>
+                                 <dd class="col-9" id="lblMobile"></dd>
+                                 <dt class="col-3">Email</dt>
+                                 <dd class="col-9" id="lblEmail"></dd>
+                                 <dt class="col-3">Employee Position</dt>
+                                 <dd class="col-9" id="lblPosition"></dd>
+                                 <dt class="col-3">City</dt>
+                                 <dd class="col-9" id="lblCity"></dd>
+                             </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <script>
+            function EmployeeSummaryClick() {
+                // Get input values
+                var name = document.querySelector('.EmployeeName').value;
+                var gender = document.getElementById('Gender').value;
+                var mobile = document.querySelector('.Mobile').value;
+                var email = document.querySelector('.Email').value;
+                var position = document.getElementById('Position').value;
+                var city = document.getElementById('City').value;
+    
+                // Update summary modal with input values
+                document.getElementById('lblName').textContent = name;
+                document.getElementById('lblGender').textContent = gender;
+                document.getElementById('lblMobile').textContent = mobile;
+                document.getElementById('lblEmail').textContent = email;
+                document.getElementById('lblPosition').textContent = position;
+                document.getElementById('lblCity').textContent = city;
+            };
+    </script>
+    
+</body>
+</html>

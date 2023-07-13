@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        @keyframes Zoom
+        {
+           from {
+               margin-left: 110%;
+               margin-top: 20%;
+               font-size: 20px;
+           }
+           50% {
+            font-size: 120px;
+           }
+           to {
+             margin-left: 0%;
+             margin-top: 0%;
+             font-size: 40px;
+           }
+        }
+        @keyframes ZoomImage
+        {
+           from {
+               margin-left: 110%;
+               margin-top: 20%;
+               width: 50px;
+               height: 50px;
+           }
+           10%{
+             width: 200px;
+             height: 200px;
+             transform: skew(50deg);
+           }
+           50% {
+               width: 400px;
+               height: 400px;
+               transform: rotate(180deg);
+           }
+           80% {
+              width:200px;
+              height: 200px;
+              transform: skewY(60deg);
+           }
+           to {
+             margin-left: 0%;
+             margin-top: 0%;
+           }
+        }
+        body {
+           overflow: hidden;
+        }
+       h1 {
+         animation-name: Zoom;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+       }
+       img {
+         animation-name: ZoomImage;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+       }
+    </style>
+</head>
+<body>
+      <h1>Welcome</h1>
+      <img src="../Images/Images/avatar.jpg" width="50" height="50">
+</body>
+</html>

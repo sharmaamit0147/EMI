@@ -1,0 +1,10 @@
+@import "variables.scss";
+
+@mixin ApplyEffects()
+{
+    .container {
+        box-shadow: $shadow;
+        border: $border;
+        padding: $padding;
+    }
+}

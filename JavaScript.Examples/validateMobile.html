@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var regExp = / /;
+        function CountryChanged(){
+            var country = document.getElementById("Country").value;
+            var flag = document.getElementById("flag");
+            var mobile = document.getElementById("Mobile");
+            if(country=="India") {
+                flag.src = "../public/Images/Images/india.jpg";
+                mobile.placeholder = "+91 and 10 digits";
+                regExp = /\+91\d{10}/;
+
+            }else if(country=="US") {
+                flag.src = "../public/Images/Images/usa.jpg";
+                mobile.placeholder = "+(1)(425) 555-0100";
+                regExp = /\+\(1\)\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/;
+
+            } else if(country=="UK") {
+                flag.src = "../public/Images/Images/uk.jpg";
+                mobile.placeholder = "+(44)(20) 1234 5678";
+                regExp = /\+\(44\)\([0-9]{2}\)\s[0-9]{4}\s[0-9]{4}/;
+
+            } else {
+                mobile.placeholder = "Please Select Country";
+                flag.src = "";
+                flag.alt = "N/A";
+            }
+        }
+        function VerifyClick(){
+            var mobile = document.getElementById("Mobile").value;
+            if(mobile.match(regExp)){
+                document.write("Your mobile verified successfully...");
+            } else {
+                document.getElementById("error").innerHTML = "Invalid Mobile - " + document.getElementById("Country").value + "-" + document.getElementById("Mobile").placeholder;
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Verify Your Mobile</h2>
+    <dl class="w-25">
+        <dt>Select Your Country</dt>
+        <dd>
+            <select id="Country" onchange="CountryChanged()" class="form-select">
+                <option>Choose Country</option>
+                <option>India</option>
+                <option>US</option>
+                <option>UK</option>
+            </select>
+        </dd>
+        <dt>Your Mobile Number</dt>
+        <dd class="input-group">
+            <input type="text" id="Mobile" class="form-control">
+            <span class="input-group-text"><img id="flag" width="50"></span>
+        </dd>
+        <button onclick="VerifyClick()" class="btn btn-primary w-100">Verify</button>
+    </dl>
+    <h2 class="text-center text-danger" id="error"></h2>
+</body>
+</html>

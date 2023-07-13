@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+          var count = 0;
+          function LoadProduct(){
+                count++;
+                fetch(`http://fakestoreapi.com/products/${count}`)
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(product){
+                    document.getElementById("title").innerHTML = product.title;
+                    document.getElementById("pic").src= product.image;
+                })
+          }
+          function bodyload(){
+            LoadProduct();
+          }
+          var slideShow;
+          function PlayClick(){
+              slideShow = setInterval(LoadProduct, 5000);
+              document.getElementById("status").innerHTML = "<b>Slide Show - Started</b>";
+          }
+          function PauseClick(){
+              clearInterval(slideShow);
+              document.getElementById("status").innerHTML = "<b>Slide Show - Paused</b>";
+          }
+          function NextClick(){
+             LoadProduct();
+          }
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid d-flex justify-content-center align-items-center" style="height:500px">
+    <div class="card p-2 w-50" >
+       <div class="row">
+            <div class="col-2">
+                <button class="btn btn-danger" onclick="PreviousClick()">
+                    <span class="bi bi-chevron-left"></span>
+                </button>
+            </div>
+            <div class="col-8">
+                <div class="card-header text-center">
+                    <p id="title"></p>
+                    <p id="status"></p>
+                </div>
+                <div class="card-body">
+                    <img id="pic" width="100%" height="300">
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary" onclick="PlayClick()">
+                        <span class="bi bi-play"></span>
+                    </button>
+                    <button class="btn btn-primary" onclick="PauseClick()">
+                        <span class="bi bi-pause"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-danger" onclick="NextClick()">
+                    <span class="bi bi-chevron-right"></span>
+                </button>
+            </div>
+       </div>
+    </div>
+</body>
+</html>

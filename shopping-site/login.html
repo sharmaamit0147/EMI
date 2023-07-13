@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery.cookie/jquery.cookie.js"></script>
+    <script>
+        $(function(){
+            $("#error").html((navigator.cookieEnabled)?"Cookies Enabled":"Please Allow Cookies on your Browser - For our site");
+            $("#btnLogin").click(function(){
+                $.ajax({
+                    method: "get",
+                    url: "../data/users.json",
+                    success: (users) => {
+                        for(var user of users){
+                            if(user.UserName==$("#UserId").val() && user.Password==$("#Password").val()){
+                                $.cookie("userid", $("#UserId").val(), {expires :4});
+                                location.href="shop.html";
+                                break;
+                            } else {
+                                $("#error").html("Invalid UserId / Password");
+                            }
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <a href="index.html">Shopping Index</a>
+    <h2>User Login</h2>
+    <dl>
+        <dt>User Id</dt>
+        <dd><input type="text" id="UserId"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+    </dl>
+    <button id="btnLogin">Login</button>
+    <p id="error" align="center"></p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            var now = new Date();
+            $("#time").html("Page Loaded At : " + now.toLocaleTimeString());
+
+            function LoadPage(pageName) {
+                $.ajax({
+                    method: "get",
+                    url: pageName,
+                    success: (data) => {
+                        $("main").html(data);
+                    },
+                    error: (ex) => {
+                        alert(ex);
+                    }
+                })
+            }
+
+            $("button").click(function(e){
+                switch(e.target.id) {
+                    case "emi":
+                    LoadPage("../JavaScript.Examples/EMI.html")
+                    break;
+                    case "kfc":
+                    LoadPage("../JavaScript.Examples/kfcOnline.html")
+                    break;
+                    case "shopper":
+                    LoadPage("../JavaScript.Examples/shopper-template.html")
+                    break;
+                }
+            })
+        })
+    </script>
+</head>
+<body class="container-fluid">
+    <nav class="mt-3">
+        <ul class="list-unstyled d-flex">
+            <li class="me-3">
+                <button id="emi" class="btn btn-primary">EMI Calculator</button>
+            </li>
+            <li class="me-3">
+                <button id="shopper" class="btn btn-primary">Shopper Template</button>
+            </li>
+            <li class="me-3">
+                <button id="kfc" class="btn btn-primary">KFC Form</button>
+            </li>
+            <li class="me-3">
+                <button class="btn btn-primary" id="time"></button>
+            </li>
+        </ul>
+    </nav>
+    <main class="mt-2">
+
+    </main>
+</body>
+</html>

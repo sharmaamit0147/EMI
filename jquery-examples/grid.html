@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <link rel="stylesheet" href="../node_modules/jsgrid/dist/jsgrid.min.css">
+    <link rel="stylesheet" href="../node_modules/jsgrid/dist/jsgrid-theme.min.css">
+
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../node_modules/jsgrid/dist/jsgrid.js"></script>
+    <script>
+        var products = [
+                        {
+                            "Name": "Samsung TV",
+                            "Price": 35000.55,
+                            "Stock": true,
+                            "Rating": {"Rate":4.5, "Count":6000},
+                            "Photo": "../public/Images/Images/tv.jpg"
+                        },
+                        {
+                            "Name": "Nike Casuals",
+                            "Price": 5000.35,
+                            "Stock": true,
+                            "Rating":{"Rate":3.5, "Count":300},
+                            "Photo": "../public/Images/Images/shoe.jpg"
+                        },
+                        {
+                            "Name": "Speaker",
+                            "Price": 4000.22,
+                            "Stock": false,
+                            "Rating":{"Rate": 4.2, "Count": 5000},
+                            "Photo": "../public/Images/Images/speaker.jpg"
+                        }
+                    ];
+        $(function(){
+            $("#grid").jsGrid({
+                width: "100%",
+                height: "300px",
+
+                filtering: true,
+                editing:true,
+                sorting:true,
+                paging: true,
+
+                data : products,
+
+                fields: [
+                    { name: "Name", type: "text", width:150},
+                    { name: "Price", type: "number", width:100},
+                    { name: "Stock", type: "checkbox", title: "In Stock" },
+                    { type: "control" }
+                ]
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>Product Grid</h2>
+    <div id="grid">
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script type="text/javascript">
+        function bodyload(){
+            fetch("../data/products.json")
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(products){
+                for(var product of products)
+                {
+                    var div = document.createElement("div");
+                    div.className = "card p-2 m-2";
+                    div.style.width = "300px";
+                    div.innerHTML = `
+                       <img src=${product.Photo} class="card-img-top" height="160">
+                       <div class="card-header">
+                            <h3>${product.Name}</h3>
+                        </div>
+                        <div class="card-body">
+                            <dl>
+                               <dt>Price</dt>
+                               <dd>${product.Price}</dd>
+                               <dt>Stock</dt>
+                               <dd>${product.Stock}</dd>
+                               <dt>Rating</dt>
+                               <dd>
+                                <span class="bi bi-star-fill text-success"> </span> ${product.Rating.Rate} [${product.Rating.Count}]
+                               </dd>
+                            </dl>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-danger w-100"> <span class="bi bi-cart4"></span> Add to Cart</button>
+                        </div>
+                    `;
+                    document.getElementById("catalog").appendChild(div);
+                }
+            })
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <div id="catalog" class="d-flex flex-wrap">
+
+    </div>
+</body>
+</html>

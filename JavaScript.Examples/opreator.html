@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+         function LoadProduct(id) {
+             fetch(`http://fakestoreapi.com/products/${id}`)
+             .then(function(response){
+                return response.json();
+             })
+             .then(function(product){
+                 document.getElementById("title").innerHTML = product.title;
+                 document.getElementById("pic").src= product.image;
+                 document.getElementById("details").innerHTML = `&#8377; ${product.price}<br><span class="bi bi-star-fill"></span> ${product.rating.rate}`;
+             })
+         }
+         function bodyload(){
+             LoadProduct(1);
+         }
+         var count = 1;
+         function NextClick(){
+            count++;
+            LoadProduct(count);
+         }
+         function PreviousClick(){
+            count--;
+            LoadProduct(count);
+         }
+    </script>
+    <style>
+        #details {
+            position: fixed;
+            top: 100px;
+            right: 200px;
+            border:2px solid green;
+            width: 100px;
+            height: 60px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body onload="bodyload()" class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="card p-2 m-2" style="width:500px">
+        <div class="card-header text-center">
+            <p id="title"></p>
+        </div>
+        <div class="card-body text-center">
+            <img height="300" width="100%" id="pic">
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-danger" onclick="PreviousClick()">
+                <span class="bi bi-chevron-left"></span>
+            </button>
+            <button class="btn btn-danger" onclick="NextClick()">
+                <span class="bi bi-chevron-right"></span>
+            </button>
+        </div>
+    </div>
+   
+        <div id="details" class="badge bg-success text-white"></div>
+   
+</body>
+</html>

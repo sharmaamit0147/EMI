@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        var cities = ["Delhi", "Hyd", "Chennai"];
+        function LoadCities(){
+            document.getElementById("lstCities").innerHTML="";
+            for(var city of cities)
+            {
+                var option = document.createElement("option");
+                option.text = city;
+                option.value = city;
+                document.getElementById("lstCities").appendChild(option);
+            }
+            document.getElementById("lblCount").innerHTML = `Total Number of Cities : ${cities.length}`;
+        }
+
+        function bodyload(){
+            LoadCities();
+        }
+        function AddClick(){
+            var cityname  = document.getElementById("txtCity").value;
+            if(cities.indexOf(cityname)==-1){
+            cities.push(cityname);
+            alert(`${cityname} Added to list`);
+            LoadCities();
+            document.getElementById("txtCity").value = "";
+            } else {
+                alert(`${cityname} Exists`);
+            }
+           
+        }
+
+        function RemoveClick(){
+            var selectedCity = document.getElementById("lstCities").value;
+            var selectedIndex = cities.indexOf(selectedCity);
+            var flag = confirm(`Delete City : ${selectedCity}\nAre you sure want to Delete?`);
+            if(flag==true) {
+                cities.splice(selectedIndex,1);
+                LoadCities();
+            }
+        }
+        function SortAsc(){
+            cities.sort();
+            LoadCities();
+        }
+        function SortDsc(){
+            cities.sort();
+            cities.reverse();
+            LoadCities();
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <h2>Array Manipulations</h2>
+    <div class="w-25">
+        <div>
+            <label class="form-label">Add New City</label>
+            <div class="input-group">
+                <input type="text" id="txtCity" class="form-control">
+                <button class="btn btn-primary" onclick="AddClick()">Add</button>
+            </div>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Select City</label>
+            <div>
+                <select id="lstCities" size="3" class="form-select">
+
+                </select>
+            </div>
+            <div class="mt-2">
+                <span id="lblCount"></span>
+            </div>
+        </div>
+        <div class="mt-3">
+            <button class="btn btn-danger" onclick="RemoveClick()"> <span class="bi bi-trash"></span>Remove</button>
+            <button class="btn btn-success" onclick="SortAsc()">
+                <span class="bi bi-sort-alpha-down"></span>
+            </button>
+            <button class="btn btn-dark" onclick="SortDsc()">
+                <span class="bi bi-sort-alpha-up"></span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

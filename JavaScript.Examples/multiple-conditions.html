@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         var userDetails = {
+             "UserName": "amit123",
+             "Password": "amit@11"
+         }
+         function LoginClick(){
+            var username = document.getElementById("UserName").value;
+            var password = document.getElementById("Password").value;
+            var error = document.getElementById("Error");
+            if(username==="") {
+                error.innerHTML= "User Name Required".fontcolor('red');
+            } else {
+                if(userDetails.UserName===username){
+                    if(userDetails.Password===password){
+                            document.write("Login Success..");
+                    } else {
+                        error.innerHTML = "Invalid Password".fontcolor('red');
+                    }
+                    }
+                    else {
+                        error.innerHTML = "Invalid User Name".fontcolor('red');
+                 }
+            }
+         }
+    </script>
+</head>
+<body>
+    <dl>
+        <h3>User Login</h3>
+        <dt>User Name</dt>
+        <dd><input type="text" id="UserName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+    </dl>
+    <button onclick="LoginClick()">Login</button>
+    <p align="center" id="Error"></p>
+</body>
+</html>

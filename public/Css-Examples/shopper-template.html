@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopper Template</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .brand-title {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .brand menu {
+            font-size: 20px;
+        }
+        .brand-menu span {
+            margin-right: 20px;
+        }
+        .brand-icons {
+            font-size: 20px;
+        }
+        .brand-icons span {
+            margin-right: 20px;
+        }
+        .brand-offer {
+            background-color: black;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+        .brand-nav {
+            margin-top: 10px;
+            height: 450px;
+            display: grid;
+            grid-template-columns: 4fr 4fr 4fr;
+        }
+        .women {
+            background-image: url("../Images/Images/fashion1.jpg");
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            opacity: 0.6;
+        }
+        .women:hover {
+            opacity: 1;
+        }
+        .men {
+            background-image: url("../Images/Images/fashion2.jpg");
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            opacity: 0.6;
+        }
+        .men:hover {
+            opacity: 1;
+        }
+        .kids {
+            background-image: url("../Images/Images/fashion3.jpg");
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            opacity: 0.6;
+        }
+        .kids:hover {
+            opacity: 1;
+        }
+        .banner-title {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 2px black;
+        }
+        .men button {
+            width: 200px;
+            height: 45px;
+            background-color: white;
+        }
+        .women button {
+            width: 200px;
+            height: 45px;
+            background-color: white;
+        }
+        .kids button {
+            width: 200px;
+            height: 45px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <header>
+        <div class="brand-title">
+            Shopper.
+        </div>
+        <div class="brand-menu">
+            <span>Home</span>
+            <span>Catalog</span>
+            <span>Shop</span>
+            <span>Blog</span>
+            <span>Pages</span>
+            <span>Docs</span>
+        </div>
+        <div class="brand-icons">
+            <span class="bi bi-search"></span>
+            <span class="bi bi-person"></span>
+            <span class="bi bi-heart"></span>
+            <span class="bi bi-cart"></span>
+        </div>
+    </header>
+    <div class="brand-offer">
+        <span class="bi bi-lightning-fill text-warning"></span> HAPPY HOLIDAY DEALS ON EVERYTHING <span class="bi bi-lightning-fill text-warning"></span>
+    </div>
+    <div class="brand-nav">
+        <div class="women">
+                <div class="banner-title">
+                    Women
+                </div>
+                <div>
+                    <button>Shop Women <span class="bi bi-arrow-right"></span> </button>
+                </div>
+        </div>
+        <div class="men">
+            <div class="banner-title">
+                Men
+            </div>
+            <div>
+                <button>Shop Men <span class="bi bi-arrow-right"></span> </button>
+            </div>
+        </div>
+        <div class="kids">
+            <div class="banner-title">
+                Kids
+            </div>
+            <div>
+                <button>Shop Kids <span class="bi bi-arrow-right"></span> </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

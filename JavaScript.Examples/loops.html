@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    function LoadProducts(){
+        fetch("http://fakestoreapi.com/products")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(products){
+            for(var product of products){
+                if(product.category=="electronics"){
+                    continue;
+                }
+                document.write(`${product.title} - <b>$${product.category}</b> <br>`);
+            }
+        })
+    }
+    LoadProducts();
+</script>

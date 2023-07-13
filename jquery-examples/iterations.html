@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            fetch("../data/products.json")
+            .then(response=>response.json())
+            .then(products=> {
+                $.each(products,(property, product)=>{
+                    $(`
+                        <tr>
+                            <td>${product.Name}</td>
+                            <td>${product.Price}</td>
+                            <td><img src=${product.Photo} width="100" height="100"></td>
+                            <td>${product.Stock}</td>
+                            <td>${product.Rating.Rate} [${product.Rating.Count}]</td>
+                        </tr>
+                    `).appendTo("tbody");
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <table width="400" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Photo</th>
+                <th>Stock</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

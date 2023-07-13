@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            height: 600px;
+        }
+    </style>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center">
+    <form class="border border-3 border-primary p-3">
+        <h2> <span class="bi bi-person-fill"></span> Register User</h2>
+        <div class="mb-3">
+            <label for="UserName" class="form-label">User Name</label>
+            <div>
+                <input type="text" class="form-control" name="UserName">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="Password">Password</label>
+            <div>
+                <input type="password" class="form-control" name="Password">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="City">Your City</label>
+            <div>
+                <select name="City" class="form-select">
+                    <option>Choose City</option>
+                    <option>Delhi</option>
+                    <option>Hyd</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Price Range</label>
+            <div>
+                <input type="range" class="form-range">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="Subscribe">Subscribe</label>
+            <div class="form-switch">
+                <input type="checkbox" class="form-check-input"> <label class="form-check-label">Yes</label>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary w-100">Register</button>
+        </div>
+    </form>
+</body>
+</html>

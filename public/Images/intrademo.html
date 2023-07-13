@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .topic {
+            width: 200px;
+            padding: 10px;
+            box-shadow: 2px 2px 2px black;
+            height: 200px;
+            border:1px solid black;
+            margin: 20px;
+        }
+        .topic:target {
+            background-color: black;
+            color:white;
+            font-size: 25px;
+            border-radius: 30px;
+        }
+        .container {
+            display: flex;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            background-color: black;
+            color:white;
+            padding: 10px;
+        }
+        li {
+            font-size: 20px;
+            margin-right: 50px;
+        }
+        a{
+            color:white;
+            text-decoration: none;
+        }
+        li:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#html">HTML</a></li>
+            <li><a href="#css">CSS</a></li>
+            <li><a href="#js">JavaScript</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div id="html" class="topic">
+            <h2>HTML</h2>
+            <p>It is a markup language.</p>
+        </div>
+        <div id="css" class="topic">
+            <h2>CSS</h2>
+            <p>It defines styles for HTML.</p>
+        </div>
+        <div id="js" class="topic">
+            <h2>JavaScript</h2>
+            <p>It is a client side language.</p>
+        </div>
+    </div>
+</body>
+</html>

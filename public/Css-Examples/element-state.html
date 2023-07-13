@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:optional+span {
+            display: none;
+        }
+        input:required+span {
+            display: inline;
+            color: red;
+        }
+        input:optional {
+            background: yellow;
+        }
+        input:required {
+            background-color: red;
+        }
+        #UserName:valid~div {
+            display: none;
+        }
+        #UserName:valid {
+            background-color: lightgreen;
+        }
+        #UserName:valid+span {
+            display: none;
+        }
+        #UserName:invalid~div {
+            color: red;
+            display: block;
+        }
+        #Mobile:invalid~div {
+            color: red;
+            display: block;
+        }
+        #Mobile:valid~div {
+            display: none;
+        }
+        #Age:in-range~div {
+            display: none;
+        }
+        #Age:out-of-range~div {
+            display: block;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>User Name</dt>
+        <dd>
+            <input  type="text" id="UserName" required><span>*</span>
+            <div>User Name Required</div>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input  type="text" id="Mobile" pattern="\+91\d{10}"><span>*</span>
+            <div>Invalid Mobile</div>
+        </dd>
+        <dt>Age</dt>
+        <dd>
+            <input type="number" id="Age" min="15" max="30"><span>*</span>
+            <div>Age 15 to 30 only</div>
+        </dd>
+    </dl>
+    <button>Submit</button>
+</body>
+</html>

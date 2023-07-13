@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color-container {
+            display: flex;
+            margin: 20px;
+        }
+        .color-container div {
+            width: 200px;
+            padding: 30px;
+            color: white;
+            font-size: 20px;
+        }
+        .color-container div:hover{
+            cursor: grab;
+        }
+    </style>
+    <script>
+        function GetColor(colorName) {
+            var pic = document.querySelector("img");
+            switch(colorName)
+            {
+                case "red":
+                 pic.src = "../public/Images/Images/red-shirt.png";
+                 break;
+                case "green":
+                 pic.src = "../public/Images/Images/green-shirt.png";
+                 break;
+                case "blue":
+                 pic.src = "../public/Images/Images/blue-shirt.png";
+                 break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="color-container">
+        <div onmouseover="GetColor('red')" style="background-color: red;">
+            red
+        </div>
+        <div onmouseover="GetColor('green')" style="background-color: green;">
+            green
+        </div>
+        <div onmouseover="GetColor('blue')" style="background-color: blue;">
+            blue
+        </div>
+    </div>
+    <div>
+        <img src="../public/Images/Images/blue-shirt.png" width="300" height="300">
+    </div>
+</body>
+</html>

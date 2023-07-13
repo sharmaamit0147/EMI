@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+        }
+        header {
+            background-color: black;
+            color:white;
+            text-align: center;
+        }
+        main {
+            height: 500px;
+            overflow: auto;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            background-color: black;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            width: 100px;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        li:hover {
+            background-color: green;
+            color:black;
+        }
+       nav a {
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function bodyload(){
+            var recent = document.getElementById("recent");
+            switch(location.hash){
+                case "#asp":
+                    recent.innerHTML = "ASP.NET"
+                    break;
+                case "#android":
+                    recent.innerHTML = "Android";
+                    break;
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <header>
+        <h1>Online Tutorials</h1>
+    </header>
+    <section>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#asp">ASP.NET</a></li>
+            <li><a href="#android">Android</a></li>
+            <li><a href="#php">PHP</a></li>
+          </ul>
+          <h3>Recently Viewed</h3>
+          <p id="recent"></p>
+        </nav>
+        <main>
+           <h2 id="home">Home</h2>
+           <p>Depending on <span><a href="#frameworks">Mobile Frameworks</a></span> how you obtained the Windows software, this is a license agreement between (i) you and the device manufacturer or software installer that distributes the software with your device; or (ii) you and Microsoft Corporation (or, based on where you live or, if a business, where your principal place of business is located, one of its affiliates) if you acquired the software from a retailer. Microsoft is the device manufacturer for devices produced by Microsoft or one of its affiliates, and Microsoft is the retailer if you acquired the software directly from Microsoft. Note that if you are a volume license customer, use of this software is subject to your volume license agreement rather than this agreement.</p>
+           <h2 id="asp">ASP.NET</h2>
+            <div> <a href="#home">Back to Top</a></div>
+           <img src="images/asp.jpg" width="100" height="100">
+           <p>Depending on how you obtained the Windows software, this is a license agreement between (i) you and the device manufacturer or software installer that distributes the software with your device; or (ii) you and Microsoft Corporation (or, based on where you live or, if a business, where your principal place of business is located, one of its affiliates) if you acquired the software from a retailer. Microsoft is the device manufacturer for devices produced by Microsoft or one of its affiliates, and Microsoft is the retailer if you acquired the software directly from Microsoft. Note that if you are a volume license customer, use of this software is subject to your volume license agreement rather than this agreement.</p>
+           <h2 id="android">Android Training</h2>
+           <div><a href="#home">Back to Top</a></div>
+           <img src="images/android.jpg" width="100" height="100">
+           <p>Depending on how you obtained the Windows software, this is a license agreement between (i) you and the device manufacturer or software installer that distributes the software with your device; or (ii) you and Microsoft Corporation (or, based on where you live or, if a business, where your principal place of business is located, one of its affiliates) if you acquired the software from a retailer. Microsoft is the device manufacturer for devices produced by Microsoft or one of its affiliates, and Microsoft is the retailer if you acquired the software directly from Microsoft. Note that if you are a volume license customer, use of this software is subject to your volume license agreement rather than this agreement.</p>
+             <dl id="frameworks">
+                <dt>Mobile Frameworks</dt>
+                <dd>Apache Cordova</dd>
+                <dd>Ionic</dd>
+                <dt>Mobile Platforms</dt>
+                <dd>Android</dd>
+                <dd>IOS</dd>
+             </dl>
+           <h2 id="php">PHP Tutorial</h2>
+           <div><a href="#home">Back to Top</a></div>
+           <img src="images/php.jpg" width="100" height="100">
+           <p>Depending on how you obtained the Windows software, this is a license agreement between (i) you and the device manufacturer or software installer that distributes the software with your device; or (ii) you and Microsoft Corporation (or, based on where you live or, if a business, where your principal place of business is located, one of its affiliates) if you acquired the software from a retailer. Microsoft is the device manufacturer for devices produced by Microsoft or one of its affiliates, and Microsoft is the retailer if you acquired the software directly from Microsoft. Note that if you are a volume license customer, use of this software is subject to your volume license agreement rather than this agreement.</p>
+           
+        </main>
+    </section>
+</body>
+</html>

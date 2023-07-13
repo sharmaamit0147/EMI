@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+
+            $("#UserId").keyup(function(e){
+                $.ajax({
+                    method:"get",
+                    url: "http://localhost:4400/getcustomers",
+                    success: (data)=>{
+                        for(var user of users){
+                            if(user.UserId==e.target.value){
+                                $("#UserError").html("User Id Taken - Try Another");
+                                break;
+                            } else {
+                                $("#UserError").html("User Id Available");
+                            }
+                        }
+                    }
+                })
+            })
+
+            $("#btnRegister").click(function(){
+                var userDetails = {
+                    UserId: $("#UserId").val(),
+                    UserName: $("#UserName").val(),
+                    Password: $("#Password").val(),
+                    Email: $("#Email").val(),
+                    Mobile: $("#Mobile").val()
+                };
+                $.ajax({
+                    method: "post",
+                    url: "http://localhost:4400/addcustomer",
+                    data: userDetails,
+                    success: res=> {
+                        alert(`Registered Successfully..`);
+                        location.href="login.html";
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>New User Register</h2>
+    <dl>
+        <dt>UserId</dt>
+        <dd><input type="text" id="UserId"></dd>
+        <dd id="UserError"></dd>
+        <dt>UserName</dt>
+        <dd><input type="text" id="UserName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+        <dt>Email</dt>
+        <dd><input type="email" id="Email"></dd>
+        <dt>Mobile</dt>
+        <dd><input type="text" id="Mobile"></dd>
+    </dl>
+    <button id="btnRegister">Register</button>
+    <p>
+        <a href="login.html">Existing User? Login</a>
+    </p>
+</body>
+</html>

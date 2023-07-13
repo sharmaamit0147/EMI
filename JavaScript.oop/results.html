@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <script>
+        function bodyload(){
+            var data = [
+                {Topic : "JavaScript", Description: "JavaScript is a programming language."},
+                {Topic : "HTML", Description: "HTML is a markup language."}
+            ];
+            var term = location.search.substring(location.search.indexOf("=")+1);
+            for(var item of data){
+                if(item.Topic==term) {
+                    document.querySelector("p").innerHTML = item.Description;
+                    break;
+                } else {
+                    document.querySelector("p").innerHTML = `${term} - Not Found`;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <h2>Results</h2>
+    <p></p>
+</body>
+</html>
